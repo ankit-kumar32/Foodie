@@ -7,8 +7,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Body=()=>{
  //state variable- super powerful variable
  //arr destructuring
-   const [listOfRestaurants,setListOfRestaurants]=useState(resList);
-  //const [listOfRestaurants,setListOfRestaurants]=useState([]);
+   //const [listOfRestaurants,setListOfRestaurants]=useState(resList);
+  const [listOfRestaurants,setListOfRestaurants]=useState([]);
    const [FilteredRestraunt,setFilteredRestraunt]=useState([]);
    const [searchText,setSearchText]=useState("");
 
@@ -29,14 +29,14 @@ const RestaurantsCardPromoted=withPromotedLabel(RestaurantCard);
      setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
      setFilteredRestraunt(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
-  //console.log("body rendered",listOfRestaurants);
+    console.log("body rendered",listOfRestaurants);
    const OnlineStatus=useOnlineStatus();
    if(OnlineStatus===false)return (
     <h1>Looks like you're offline!! Please Check Your internet connection</h1>
    );
 
  // console.log(listOfRestaurants);
-  if(listOfRestaurants?.length===0){
+  if(listOfRestaurants.length===0){
     return <Shimmer/>
     
   }
