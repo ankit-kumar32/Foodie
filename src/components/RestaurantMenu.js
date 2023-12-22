@@ -1,4 +1,4 @@
-//import { useState,useEffect } from "react";
+ //import { useState,useEffect } from "react";
 import useRestaurantMenu from "../utils/useRestrauntMenu";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
@@ -8,8 +8,8 @@ import { useState } from "react";
 
 
 const RestaurantMenu=()=>{
-  //  const [resInfo,setResInfo]=useState(null);
-   const {resId}=useParams();
+     //const [resInfo,setResInfo]=useState(null);
+    const {resId}=useParams();
    // console.log(param)
    // console.log(restid);
 
@@ -17,12 +17,12 @@ const RestaurantMenu=()=>{
   //   useEffect(()=>{
   //      fetchMenu();
   //    },[]);
-    // const resId=126286;
+  //   const resId=126286;
   // const fetchMenu=async()=>{
   //   const data = await fetch(`https://foodishhub.live/api/menu?id=${resId}`);
   //   const json = await data.json();
   
-    //console.log(json);
+  //   console.log(json);
   //   setResInfo(json.data);
   // }
 
