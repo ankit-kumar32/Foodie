@@ -8,36 +8,18 @@ import { useState } from "react";
 
 
 const RestaurantMenu=()=>{
-     //const [resInfo,setResInfo]=useState(null);
-    const {resId}=useParams();
-   // console.log(param)
-   // console.log(restid);
-
-   const resInfo=useRestaurantMenu(resId);
-  //   useEffect(()=>{
-  //      fetchMenu();
-  //    },[]);
-  //   const resId=126286;
-  // const fetchMenu=async()=>{
-  //   const data = await fetch(`https://foodishhub.live/api/menu?id=${resId}`);
-  //   const json = await data.json();
   
-  //   console.log(json);
-  //   setResInfo(json.data);
-  // }
-
+    const {resId}=useParams();
+  
+   const resInfo=useRestaurantMenu(resId);
   const [showIndex,setShowIndex]=useState(null);
 
   if(resInfo===null)return <Shimmer/>
-   //console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card);
+   
 const {name,cuisines,costForTwoMessage}=resInfo?.cards[0]?.card?.card?.info;
 
- //const {itemCards}=resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards
-
-
 const{itemCards}=resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-//console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-//console.log(itemCards);
+
 
 const categories =resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c)=>c?.card?.["card"]?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"

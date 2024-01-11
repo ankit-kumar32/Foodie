@@ -4,10 +4,8 @@ import RestaurantCard ,{withPromotedLabel} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState,useEffect } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import axios from "axios";
 const Body=()=>{
- //state variable- super powerful variable
- //arr destructuring
-   //const [listOfRestaurants,setListOfRestaurants]=useState(resList);
   const [listOfRestaurants,setListOfRestaurants]=useState([]);
    const [FilteredRestraunt,setFilteredRestraunt]=useState([]);
    const [searchText,setSearchText]=useState("");
@@ -20,14 +18,23 @@ const RestaurantsCardPromoted=withPromotedLabel(RestaurantCard);
       
   
   const  fetchData=async()=>{
-    const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+  //   const data = await fetch(
+  //       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
        
-    ); 
-    const json = await data.json();
-    console.log("apiData",json);
-     setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-     setFilteredRestraunt(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  //   ); 
+  //   //console.log("data", data);
+  //  // const json = await data.json();
+    
+  //   const json=await data.json();
+  //    console.log("apiData",json);
+     axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+    ).then((res)=> {
+      console.log("resData", res)
+      setListOfRestaurants(res.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setFilteredRestraunt(res.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    } )
+    // setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+     
   }
     console.log("body rendered",listOfRestaurants);
    const OnlineStatus=useOnlineStatus();
@@ -35,7 +42,7 @@ const RestaurantsCardPromoted=withPromotedLabel(RestaurantCard);
     <h1>Looks like you're offline!! Please Check Your internet connection</h1>
    );
 
- // console.log(listOfRestaurants);
+  console.log(listOfRestaurants);
   if(listOfRestaurants.length===0){
     return <Shimmer/>
     
@@ -77,18 +84,7 @@ const RestaurantsCardPromoted=withPromotedLabel(RestaurantCard);
              FilteredRestraunt?.map((restaurant)=>
              //dont use index as key rather use unique key id
              <Link key={restaurant?.info?.id} to={"/restaurants/"+restaurant?.info?.id}> 
-
-             {/*  
-             {
-              restaurants.data.promoted? (
-                <RestaurantCardPromoted resData={restaurant} />
-              ):
-              (
-                <RestaurantsCard resData={restaurant}/>
-              )
-             }
-
-            */}
+ 
              <RestaurantCard  resData={restaurant}/>
              </Link>
              )}
