@@ -70,8 +70,8 @@ const RestaurantsCardPromoted=withPromotedLabel(RestaurantCard);
 
           <div className="search m-4 p-4 flex items-center">
             <button className=" bg-gray-400 px-4 py-2 font-bold text-lg rounded-lg" 
-            onClick={()=>{
-            const filtered_list=listOfRestaurants?.filter((res)=>res?.info?.avgRating>3.8);
+              onClick={() => {
+                const filtered_list = listOfRestaurants?.filter((res) => res?.info?.avgRating > 4.0);
              setFilteredRestraunt(filtered_list);
             }}>
             Top Rated Restaurant

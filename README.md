@@ -1,6 +1,6 @@
 ## Foodie
 
-Link [Live](https://foodie-pearl.vercel.app/).
+
 
 <!--
 # Parcel
