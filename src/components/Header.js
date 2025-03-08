@@ -5,9 +5,9 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
 const Header=()=>{
     const [btnName,setBtName]=useState("Login");
-   // console.log("header called");
+
    const OnlineStatus=useOnlineStatus();
-//subscribing to the store using a selector
+
   const cartItems=useSelector((store)=>store.cart.items)
    console.log(cartItems);
     return (
@@ -16,7 +16,7 @@ const Header=()=>{
             <img className="w-56" src={LOGO_URL}/>
           </div>
           <div className="flex items-center">
-          {/* className=" bg-gray-400 px-4 py-2 font-bold text-lg rounded-lg" */}
+      
               <ul className="flex p-4 m-4">
                 <li className=" px-4 py-2 m-2 font-bold text-lg rounded-lg"> OnlineStatus:{OnlineStatus?"🟢":"🔴"} </li>
 

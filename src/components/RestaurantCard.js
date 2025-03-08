@@ -6,7 +6,7 @@ const styleCard={
 const RestaurantCard=(props)=>{
     const {resData}=props;
   //** Optional chaining */
-  // console.log(resData.info);
+
   const {
     cloudinaryImageId,
     name,
@@ -15,7 +15,7 @@ const RestaurantCard=(props)=>{
     costForTwo,
     
   }=resData?.info;
- // console.log( costForTwo)
+
 // 
     return (
       <div className="m-4 p-4 w-60  rounded-lg bg-gray-200 hover:bg-gray-500" >

@@ -18,15 +18,7 @@ const RestaurantsCardPromoted=withPromotedLabel(RestaurantCard);
       
   
   const  fetchData=async()=>{
-  //   const data = await fetch(
-  //       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-       
-  //   ); 
-  //   //console.log("data", data);
-  //  // const json = await data.json();
-    
-  //   const json=await data.json();
-  //    console.log("apiData",json);
+ 
      axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     ).then((res)=> {
       console.log("resData", res)
@@ -36,7 +28,6 @@ const RestaurantsCardPromoted=withPromotedLabel(RestaurantCard);
     // setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
      
   }
-    console.log("body rendered",listOfRestaurants);
    const OnlineStatus=useOnlineStatus();
    if(OnlineStatus===false)return (
     <h1>Looks like you're offline!! Please Check Your internet connection</h1>
@@ -47,7 +38,7 @@ const RestaurantsCardPromoted=withPromotedLabel(RestaurantCard);
     return <Shimmer/>
     
   }
-  //console.log(searchText,"this");
+
     return (
        <div className="body">
          <div className="filter flex">

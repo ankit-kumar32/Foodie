@@ -8,7 +8,7 @@ const Cart = () => {
    const dispatch=useDispatch();
 const handleClearCart=()=>{
   //dispatch an action
- console.log("clear working");
+
   dispatch(clearCart());
 }
   return (
